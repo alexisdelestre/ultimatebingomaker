@@ -98,33 +98,40 @@ class BingoMaker {
         const date = document.getElementById('dateInput').value || '';
         
         // Set canvas size for high quality export (add space for header if needed)
-        const cellSize = 140;
+        const scale = 2; // 2x resolution for crisp quality
+        const cellSize = 200; // Larger cells for better quality
         const gridSize = this.gridSize;
-        const borderWidth = 5;
-        const headerHeight = (pseudo || date) ? 80 : 0;
-        const canvasSize = gridSize * cellSize + (gridSize + 1) * borderWidth;
-        const totalHeight = canvasSize + headerHeight;
+        const borderWidth = 8;
+        const padding = 60; // Generous padding around the entire image
+        const headerHeight = (pseudo || date) ? 120 : 0;
+        const gridWidth = gridSize * cellSize + (gridSize + 1) * borderWidth;
+        const gridHeight = gridSize * cellSize + (gridSize + 1) * borderWidth;
+        const canvasSize = gridWidth + (padding * 2);
+        const totalHeight = gridHeight + headerHeight + (padding * 2);
         
-        canvas.width = canvasSize;
-        canvas.height = totalHeight;
+        canvas.width = canvasSize * scale;
+        canvas.height = totalHeight * scale;
+        
+        // Scale the context for high DPI
+        ctx.scale(scale, scale);
 
         // Fill background with community color
         ctx.fillStyle = '#4D8196';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(0, 0, canvasSize, totalHeight);
         
         // Draw header info if present
         if (pseudo || date) {
             ctx.fillStyle = 'white';
-            ctx.font = 'bold 24px Arial, sans-serif';
+            ctx.font = 'bold 36px Nunito, Arial, sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             
             if (pseudo && date) {
-                ctx.fillText(`${pseudo} - ${date}`, canvas.width / 2, 40);
+                ctx.fillText(`${pseudo} - ${date}`, canvasSize / 2, padding + 40);
             } else if (pseudo) {
-                ctx.fillText(pseudo, canvas.width / 2, 40);
+                ctx.fillText(pseudo, canvasSize / 2, padding + 40);
             } else if (date) {
-                ctx.fillText(date, canvas.width / 2, 40);
+                ctx.fillText(date, canvasSize / 2, padding + 40);
             }
         }
 
@@ -161,8 +168,8 @@ class BingoMaker {
         for (let i = 0; i < cells.length; i++) {
             const row = Math.floor(i / gridSize);
             const col = i % gridSize;
-            const x = col * cellSize + (col + 1) * borderWidth;
-            const y = row * cellSize + (row + 1) * borderWidth + headerHeight;
+            const x = col * cellSize + (col + 1) * borderWidth + padding;
+            const y = row * cellSize + (row + 1) * borderWidth + headerHeight + padding;
 
             // Draw cell background
             if (i === this.centerIndex) {
@@ -174,21 +181,21 @@ class BingoMaker {
 
             // Draw cell border
             ctx.strokeStyle = '#AD553D';
-            ctx.lineWidth = 3;
+            ctx.lineWidth = 4;
             ctx.strokeRect(x, y, cellSize, cellSize);
 
             // Draw center cell content
             if (i === this.centerIndex) {
                 // Draw logo if loaded, otherwise text fallback
                 if (logoLoaded && logo.complete) {
-                    const logoSize = cellSize * 0.8;
+                    const logoSize = cellSize * 0.75;
                     const logoX = x + (cellSize - logoSize) / 2;
                     const logoY = y + (cellSize - logoSize) / 2;
                     ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
                 } else {
                     // Fallback text for local development or if logo fails
                     ctx.fillStyle = 'white';
-                    ctx.font = 'bold 18px Arial, sans-serif';
+                    ctx.font = 'bold 28px Nunito, Arial, sans-serif';
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
                     ctx.fillText('★ LOGO ★', x + cellSize / 2, y + cellSize / 2);
@@ -198,7 +205,7 @@ class BingoMaker {
                 const text = cells[i].value || '';
                 if (text) {
                     ctx.fillStyle = '#333333';
-                    ctx.font = 'bold 16px Arial, sans-serif';
+                    ctx.font = 'bold 22px Nunito, Arial, sans-serif';
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
 
@@ -206,7 +213,7 @@ class BingoMaker {
                     const words = text.split(' ');
                     const lines = [];
                     let currentLine = '';
-                    const maxWidth = cellSize - 20;
+                    const maxWidth = cellSize - 30;
 
                     for (const word of words) {
                         const testLine = currentLine + (currentLine ? ' ' : '') + word;
@@ -224,7 +231,7 @@ class BingoMaker {
                     }
 
                     // Draw lines
-                    const lineHeight = 20;
+                    const lineHeight = 28;
                     const startY = y + cellSize / 2 - (lines.length - 1) * lineHeight / 2;
                     
                     lines.forEach((line, index) => {
@@ -249,7 +256,7 @@ class BingoMaker {
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-        }, 'image/jpeg', 0.9);
+        }, 'image/jpeg', 0.95);
     }
 }
 
