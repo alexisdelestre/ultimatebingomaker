@@ -119,6 +119,19 @@ class BingoMaker {
         ctx.fillStyle = '#4D8196';
         ctx.fillRect(0, 0, canvasSize, totalHeight);
         
+        // Add dotted pattern to match web interface
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+        const dotSpacing = 20;
+        const dotRadius = 1;
+        
+        for (let x = dotSpacing; x < canvasSize; x += dotSpacing) {
+            for (let y = dotSpacing; y < totalHeight; y += dotSpacing) {
+                ctx.beginPath();
+                ctx.arc(x, y, dotRadius, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+        }
+        
         // Draw header info if present
         if (pseudo || date) {
             ctx.fillStyle = 'white';
