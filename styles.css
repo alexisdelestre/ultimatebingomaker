@@ -7,6 +7,8 @@
 body {
     font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #4D8196;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
     min-height: 100vh;
     color: #333;
     padding: 20px;
@@ -72,7 +74,7 @@ header h1 {
 
 .input-group input:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(255, 233, 143, 0.3);
+    box-shadow: 0 0 0 3px rgba(255, 233, 143, 0.3), 0 4px 12px rgba(0,0,0,0.15);
     transform: translateY(-1px);
 }
 
@@ -92,7 +94,6 @@ header h1 {
     padding: 12px;
     max-width: 600px;
     margin: 0 auto 30px auto;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
 .bingo-cell {
@@ -107,6 +108,13 @@ header h1 {
     font-family: inherit;
     transition: all 0.2s ease;
     border-radius: 8px;
+    overflow: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.bingo-cell::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .bingo-cell:focus {
@@ -145,6 +153,7 @@ header h1 {
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .btn-primary {
@@ -154,7 +163,7 @@ header h1 {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(173, 85, 61, 0.4);
+    box-shadow: 0 6px 20px rgba(173, 85, 61, 0.4);
     background: #964a35;
 }
 
@@ -167,6 +176,7 @@ header h1 {
 .btn-secondary:hover {
     background: #e9ecef;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 footer {
