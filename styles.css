@@ -70,7 +70,6 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-<<<<<<< HEAD
 .seo-description {
     margin-top: 40px;
     padding: 20px;
@@ -93,9 +92,6 @@ body {
     line-height: 1.4;
     margin: 0;
 }
-
-=======
->>>>>>> 3ae57e8
 .site-branding h1 {
     font-family: 'Nunito', sans-serif;
     font-weight: 700;
@@ -355,7 +351,7 @@ footer {
     
     .main-content {
         margin-right: 0;
-        padding: 20px;
+        padding: 0 20px 0 20px;
     }
     
     .bingo-grid {
