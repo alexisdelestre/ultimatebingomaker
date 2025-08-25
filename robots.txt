@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ultimatebingomaker.vercel.app/sitemap.xml
