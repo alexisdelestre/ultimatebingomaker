@@ -3,57 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate Bingo Maker - Create Custom Bingo Cards Online Free</title>
-    <meta name="description" content="Create custom bingo cards online for free! Ultimate Bingo Maker lets you design personalized bingo games with custom text, images, and colors. Perfect for parties, events, and classrooms.">
-    <meta name="keywords" content="bingo maker, custom bingo cards, online bingo generator, free bingo creator, party games, event planning, classroom activities">
-    <meta name="author" content="Ultimate Bingo Maker">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ultimatebingomaker.vercel.app/">
-    <meta property="og:title" content="Ultimate Bingo Maker - Create Custom Bingo Cards Online Free">
-    <meta property="og:description" content="Create custom bingo cards online for free! Design personalized bingo games with custom text, images, and colors. Perfect for parties, events, and classrooms.">
-    <meta property="og:image" content="https://ultimatebingomaker.vercel.app/assets/Fichier_972x.png">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://ultimatebingomaker.vercel.app/">
-    <meta property="twitter:title" content="Ultimate Bingo Maker - Create Custom Bingo Cards Online Free">
-    <meta property="twitter:description" content="Create custom bingo cards online for free! Design personalized bingo games with custom text, images, and colors.">
-    <meta property="twitter:image" content="https://ultimatebingomaker.vercel.app/assets/Fichier_972x.png">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://ultimatebingomaker.vercel.app/">
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Ultimate Bingo Maker",
-      "description": "Create custom bingo cards online for free! Design personalized bingo games with custom text, images, and colors. Perfect for parties, events, and classrooms.",
-      "url": "https://ultimatebingomaker.vercel.app/",
-      "applicationCategory": "GameApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "creator": {
-        "@type": "Person",
-        "name": "Alexis Delestre"
-      }
-    }
-    </script>
-    
+    <title>Ultimate Bingo Maker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -67,6 +17,7 @@
             </div>
             <h1>Ultimate Bingo Maker</h1>
         </div>
+        <button class="options-btn" id="optionsBtn">Options</button>
     </div>
     
     <header>
@@ -208,6 +159,7 @@
                         </div>
                         <button id="resetColorsBtnMobile" class="btn btn-secondary">Reset Colors</button>
                     </div>
+                </div>
                 
                 <!-- Images Tab -->
                 <div class="tab-content" id="images-tab">
@@ -223,7 +175,6 @@
                     <input type="file" id="centerImageUploadMobile" accept="image/*" style="display: none;">
                     <button id="centerImageBtnMobile" class="btn btn-secondary">Change Center Image</button>
                     <button id="removeCenterImageBtnMobile" class="btn btn-secondary">Remove Image</button>
-                    
                     <div class="sidebar-section">
                         <h4>Session</h4>
                         <button id="saveSessionBtnMobile" class="btn btn-secondary">Save Session</button>
@@ -234,8 +185,6 @@
             </div>
         </div>
 
-    <!-- Sidebar Toggle Button (mobile) -->
-    <button class="sidebar-toggle-mobile" id="sidebarToggleMobile">⚙️</button>
     
     <!-- Hidden canvas for image export -->
     <canvas id="exportCanvas" style="display: none;"></canvas>

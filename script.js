@@ -76,7 +76,7 @@ class BingoMaker {
     setupSidebar() {
         // Mobile modal functionality
         const mobileModal = document.getElementById('mobileModal');
-        const sidebarToggleMobile = document.getElementById('sidebarToggleMobile');
+        const optionsBtn = document.getElementById('optionsBtn');
         const modalClose = document.getElementById('modalClose');
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
@@ -87,7 +87,7 @@ class BingoMaker {
             }
         };
 
-        sidebarToggleMobile.addEventListener('click', toggleMobileModal);
+        optionsBtn.addEventListener('click', toggleMobileModal);
         modalClose.addEventListener('click', () => {
             mobileModal.classList.remove('open');
         });
